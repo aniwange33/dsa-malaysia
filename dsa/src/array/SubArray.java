@@ -32,9 +32,25 @@ public class SubArray {
         return subArrays;
     }
 
+    private static List<List<Integer>> getSubArray2(int[] arr) {
+        List<List<Integer>> subArrays = new ArrayList<>();
+
+        for (int start = 0; start < arr.length; start++) {
+            List<Integer> subArray = new ArrayList<>();
+
+            for (int end = start; end < arr.length; end++) {
+                subArray.add(arr[end]);
+                // Add a *copy* of the current subarray to the list
+                subArrays.add(new ArrayList<>(subArray));
+            }
+        }
+
+        return subArrays;
+    }
+
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5};
-        System.out.println(getSubArray(arr));
+        System.out.println(getSubArray2(arr));
     }
 
 }
